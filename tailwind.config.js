@@ -3,6 +3,7 @@ module.exports = {
     "./pages/**/*.{js,jsx,ts,tsx}", 
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
+  darkMode: 'class',
   theme: {},
   corePlugins: {
     // Disable tailwind preflight to prevent conflict with ant design base styles.

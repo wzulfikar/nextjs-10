@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .invert {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+}
+
 html,
 body {
   padding: 0;

@@ -22,12 +22,16 @@
     "babel-plugin-import": "^1.13.3",
     "cross-env": "^7.0.3",
     "next": "10.0.9",
+    "next-dark-mode": "^3.0.0",
     "next-plugin-antd-less": "^0.3.0",
     "postcss": "^8.2.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-toggle": "^4.1.2",
     "react-use": "^17.2.1",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.0.4",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.9",
