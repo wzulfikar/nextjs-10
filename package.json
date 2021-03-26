@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "@headlessui/react": "^0.3.1",
     "@tailwindcss/jit": "^0.1.10",
     "antd": "^4.14.1",
     "autoprefixer": "^10.2.5",
