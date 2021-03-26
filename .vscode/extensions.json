@@ -1,0 +1,18 @@
+{
+    "recommendations": [
+        "christianalfoni.overmind-devtools-vscode",
+        "jsayol.firebase-explorer",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "wix.vscode-import-cost",
+        "steoates.autoimport",
+        "kisstkondoros.vscode-gutter-preview",
+        "formulahendry.auto-rename-tag",
+        "eamodio.gitlens",
+        "jpoissonnier.vscode-styled-components",
+        "deerawan.vscode-faker",
+        "gruntfuggly.todo-tree",
+        "github.vscode-pull-request-github",
+        "gimenete.github-linker"
+    ]
+}

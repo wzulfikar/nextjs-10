@@ -1,0 +1,5 @@
+checkly
+
+# Ignore test files
+jest*
+__tests__/pages

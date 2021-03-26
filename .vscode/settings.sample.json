@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+        ".next": true,
+        ".build": true,
+        "node_modules": true
+    },
+    "jest.autoEnable": false,
+    "githubIssues.issueBranchTitle": "${user}/issue-${issueNumber}",
+    "githubIssues.workingIssueFormatScm": "${issueTitle}. ${issueNumberLabel}",
+    "githubPullRequests.telemetry.enabled": false
+}
