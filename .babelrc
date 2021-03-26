@@ -1,0 +1,12 @@
+{
+    "presets": [
+        "next/babel"
+    ],
+    "env": {
+        "test": {
+            "plugins": [
+                "dynamic-import-node"
+            ]
+        }
+    }
+}

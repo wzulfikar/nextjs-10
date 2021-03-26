@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "echo \"TODO: setup test\"",
+    "test": "jest --testPathPattern='__tests__/components'",
+    "test:file": "jest",
     "test:types": "yarn tsc",
     "husky:pre-commit": "lint-staged",
     "husky:pre-push": "concurrently \"yarn test\" \"yarn test:types\"",
@@ -19,17 +20,30 @@
     "postcss": "^8.2.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-use": "^17.2.1",
     "tailwindcss": "^2.0.4"
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.30.1",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^13.0.16",
     "@types/node": "^14.14.36",
     "@types/react": "^17.0.3",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "chance": "^1.1.7",
     "concurrently": "^6.0.0",
+    "jest": "^26.6.3",
+    "jest-next-dynamic": "^1.0.1",
+    "jest-transform-stub": "^2.0.0",
     "lint-staged": "^10.5.4",
+    "msw": "^0.28.0",
     "playwright": "^1.10.0",
     "playwright-core": "^1.10.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
-    "typescript": "^4.2.3"
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.3",
+    "vercel": "^21.3.3"
   }
 }
