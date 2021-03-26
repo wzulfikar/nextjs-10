@@ -9,7 +9,8 @@
     "test": "echo \"TODO: setup test\"",
     "test:types": "yarn tsc",
     "husky:pre-commit": "lint-staged",
-    "husky:pre-push": "concurrently \"yarn test\" \"yarn test:types\""
+    "husky:pre-push": "concurrently \"yarn test\" \"yarn test:types\"",
+    "checkly:visual_tests": "LOCAL=true node ./checkly/visual_tests/public_pages.js"
   },
   "dependencies": {
     "@tailwindcss/jit": "^0.1.10",
@@ -25,6 +26,8 @@
     "@types/react": "^17.0.3",
     "concurrently": "^6.0.0",
     "lint-staged": "^10.5.4",
+    "playwright": "^1.10.0",
+    "playwright-core": "^1.10.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "typescript": "^4.2.3"
