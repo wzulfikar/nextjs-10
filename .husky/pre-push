@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Make sure all codes are type-checked before pushing
+yarn husky:pre-push

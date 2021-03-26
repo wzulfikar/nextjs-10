@@ -1,0 +1,11 @@
+{
+  "src/**/*.{js,jsx,ts,tsx,json,css}": [
+    "prettier --write"
+  ],
+  "__tests__/**/*.{js,ts,json}": [
+    "prettier --write"
+  ],
+  "pages/**/*.{js,ts,jsx,tsx}": [
+    "prettier --write"
+  ]
+}
