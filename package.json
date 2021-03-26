@@ -6,12 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
     "test": "jest --testPathPattern='__tests__/components'",
     "test:file": "jest",
     "test:types": "yarn tsc",
     "husky:pre-commit": "lint-staged",
     "husky:pre-push": "concurrently \"yarn test\" \"yarn test:types\"",
-    "checkly:visual_tests": "LOCAL=true node ./checkly/visual_tests/public_pages.js"
+    "checkly:visual_tests": "cross-env LOCAL=true node ./checkly/visual_tests/public_pages.js"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -19,6 +20,7 @@
     "antd": "^4.14.1",
     "autoprefixer": "^10.2.5",
     "babel-plugin-import": "^1.13.3",
+    "cross-env": "^7.0.3",
     "next": "10.0.9",
     "next-plugin-antd-less": "^0.3.0",
     "postcss": "^8.2.8",

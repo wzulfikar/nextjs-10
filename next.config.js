@@ -1,6 +1,13 @@
 const withAntdLess = require('next-plugin-antd-less');
 
-module.exports = withAntdLess({
+let withBundleAnalyzer = (bundle) => bundle;
+if (process.env.ANALYZE === 'true') {
+  withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: true,
+  });
+}
+
+const bundle = withAntdLess({
   // See: https://github.com/SolidZORO/next-plugin-antd-less
   modifyVars: { '@primary-color': '#5046e5' },
   lessVarsFilePath: './src/styles/antd.less',
@@ -18,3 +25,5 @@ module.exports = withAntdLess({
     return config;
   },
 });
+
+module.exports = withBundleAnalyzer(bundle)
