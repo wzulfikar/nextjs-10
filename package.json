@@ -18,6 +18,7 @@
     "@ant-design/icons": "^4.6.2",
     "@headlessui/react": "^0.3.1",
     "@tailwindcss/jit": "^0.1.10",
+    "@tailwindcss/line-clamp": "^0.2.0",
     "antd": "^4.14.1",
     "autoprefixer": "^10.2.5",
     "babel-plugin-import": "^1.13.3",
@@ -32,6 +33,7 @@
     "react-toggle": "^4.1.2",
     "react-use": "^17.2.1",
     "tailwindcss": "^2.0.4",
+    "unfurl.js": "^5.2.5",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {

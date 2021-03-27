@@ -9,5 +9,8 @@ module.exports = {
     // Disable tailwind preflight to prevent conflict with ant design base styles.
     // See: https://tailwindcss.com/docs/preflight#disabling-preflight
     preflight: false,
-   }
+  },
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ]
 };
