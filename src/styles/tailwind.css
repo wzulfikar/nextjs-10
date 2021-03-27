@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .invert {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+  }
+  .text-loading {
+    @apply text-gray-600;
+  }
+  .xy-center {
+    @apply justify-center items-center;
+  }
+}
