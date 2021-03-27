@@ -5,7 +5,7 @@ import ToggleDarkMode from '@src/components/ToggleDarkMode';
 
 export default function Home() {
   return (
-    <div className={`${styles.container} dark:bg-[#111]`}>
+    <div className={`${styles.container} dark:bg-[#111] vercel`}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -22,7 +22,7 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        <div className="-mt-2 -mb-10">
+        <div className="-mb-10">
           <ToggleDarkMode />
         </div>
 
