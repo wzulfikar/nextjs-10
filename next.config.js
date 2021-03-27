@@ -1,5 +1,7 @@
 const withAntdLess = require('next-plugin-antd-less');
 
+const nextHandlers = require('./next-handlers.js');
+
 let withBundleAnalyzer = (bundle) => bundle;
 if (process.env.ANALYZE === 'true') {
   withBundleAnalyzer = require('@next/bundle-analyzer')({
@@ -8,17 +10,19 @@ if (process.env.ANALYZE === 'true') {
 }
 
 const bundle = withAntdLess({
+  ...nextHandlers,
+
   // See: https://github.com/SolidZORO/next-plugin-antd-less
   modifyVars: { '@primary-color': '#5046e5' },
   lessVarsFilePath: './src/styles/antd.less',
 
-  // Optionsl https://github.com/webpack-contrib/css-loader#object
+  // See: https://github.com/webpack-contrib/css-loader#object
   cssLoaderOptions: {
-      modules: {
-          auto: true
-      }
+    modules: {
+      auto: true,
+    },
   },
-  
+
   // Other Config Here...
 
   webpack(config) {
@@ -26,4 +30,4 @@ const bundle = withAntdLess({
   },
 });
 
-module.exports = withBundleAnalyzer(bundle)
+module.exports = withBundleAnalyzer(bundle);
