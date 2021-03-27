@@ -18,14 +18,14 @@ const loadComponent = (component, opts?: ComponentOptions) => ({
 
 // Default wrappers
 const wrapper = {
-  center: 'bg-gray-200 dark:bg-gray-800 h-screen flex xy-center',
+  center: 'bg-gray-200 dark:bg-gray-800 h-full min-h-screen flex xy-center',
 };
 
 // Use this map to list out the components that are available for preview.
 const components = {
   SanityCheck: {
     Component: ({ text }) => (
-      <div>
+      <div className="dark:text-white">
         <b>{text}</b>
       </div>
     ),
@@ -67,7 +67,9 @@ const components = {
     }
   ),
   TailwindPreview: loadComponent(() => import('./containers/TailwindPreview')),
-  AntdPreview: loadComponent(() => import('./containers/AntdPreview')),
+  AntdPreview: loadComponent(() => import('./containers/AntdPreview'), {
+    wrapper: wrapper.center,
+  }),
   LinkPreview: loadComponent(() => import('@src/components/LinkPreview'), {
     wrapper: wrapper.center,
     props: { url: 'https://github.com' },
