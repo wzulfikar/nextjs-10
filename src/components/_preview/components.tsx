@@ -18,7 +18,7 @@ const loadComponent = (component, opts?: ComponentOptions) => ({
 
 // Default wrappers
 const wrapper = {
-  center: 'bg-gray-200 h-screen flex xy-center',
+  center: 'bg-gray-200 dark:bg-gray-800 h-screen flex xy-center',
 };
 
 // Use this map to list out the components that are available for preview.
