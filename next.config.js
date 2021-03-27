@@ -14,7 +14,6 @@ const bundle = withAntdLess({
 
   // See: https://github.com/SolidZORO/next-plugin-antd-less
   modifyVars: { '@primary-color': '#5046e5' },
-  lessVarsFilePath: './src/styles/antd.less',
 
   // See: https://github.com/webpack-contrib/css-loader#object
   cssLoaderOptions: {
