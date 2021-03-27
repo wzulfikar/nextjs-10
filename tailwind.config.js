@@ -6,9 +6,10 @@ module.exports = {
   darkMode: 'class',
   theme: {},
   corePlugins: {
-    // Disable tailwind preflight to prevent conflict with ant design base styles.
+    // If tailwind conflicts with your existing styles, try set `preflight`
+    // to false to disable tailwind css reset.
     // See: https://tailwindcss.com/docs/preflight#disabling-preflight
-    preflight: false,
+    preflight: true,
   },
   plugins: [
     require('@tailwindcss/line-clamp'),

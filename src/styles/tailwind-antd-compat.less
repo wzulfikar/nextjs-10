@@ -1,0 +1,39 @@
+/* These css overrides are based on visual checks at
+ * `src/components/_preview/containers/AntdPreview/index.tsx`
+ **/
+
+.ant-btn {
+  line-height: 0 !important;
+}
+
+.ant-message .anticon {
+  top: -2px !important;
+}
+
+a.ant-btn {
+  line-height: 30px !important;
+}
+
+.ant-drawer-header {
+  background: transparent;
+  border-bottom: transparent;
+  border-radius: transparent;
+}
+
+.ant-picker-calendar.ant-picker-calendar-full {
+  padding: 1rem;
+}
+
+/* Tailwind dark mode adjustments */
+
+.dark {
+  .ant-progress-circle .ant-progress-text {
+    color: white;
+  }
+  .ant-progress-text {
+    color: white;
+  }
+  .ant-radio-wrapper {
+    color: white;
+  }
+}
