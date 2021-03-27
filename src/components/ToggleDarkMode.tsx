@@ -1,15 +1,13 @@
 import 'react-toggle/style.css';
 
 import { memo, useEffect, useState } from 'react';
-import useDarkMode from 'use-dark-mode';
 import Toggle from 'react-toggle';
 import { HiSun, HiMoon } from 'react-icons/hi';
 
+import useDarkMode from '@src/hooks/useDarkMode';
+
 function ToggleDarkMode({ initialValue = true }) {
-  const darkMode = useDarkMode(initialValue, {
-    classNameDark: 'dark',
-    classNameLight: 'light',
-  });
+  const darkMode = useDarkMode(initialValue);
 
   const [checked, setChecked] = useState(initialValue);
 
