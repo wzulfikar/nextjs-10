@@ -4,14 +4,41 @@ type ComponentOptions = {
   // Wrap component with wrapper class (eg. `max-w-md`)
   wrapper?: string;
 
+  // File url to open in github
+  githubUrl?: string;
+
   // Pass props to underlying component. To keep the preview
   // component simple, only expose props that you want to control
   // from the preview page.
   props?: any;
 };
 
+const githubRepo = process.env.NEXT_PUBLIC_GITHUB_REPO;
+
+const getGithubUrl = (previewPath: string) => {
+  // Append .tsx extension if not exist
+  if (!previewPath.endsWith('.tsx')) {
+    previewPath += '.tsx';
+  }
+
+  // Resolve absolute import
+  if (previewPath.startsWith('@src')) {
+    previewPath = previewPath.replace('@src', 'src');
+  }
+
+  // Resolve relative path
+  if (previewPath.startsWith('./')) {
+    previewPath = previewPath.replace('./', 'src/components/_preview/');
+  }
+
+  return `${githubRepo}/blob/main/${previewPath}`;
+};
+
+const defaultGithubUrl = getGithubUrl('./components.tsx');
+
 const loadComponent = (component, opts?: ComponentOptions) => ({
   Component: lazyload(component),
+  githubUrl: opts?.githubUrl,
   wrapper: opts?.wrapper,
   props: opts?.props,
 });
@@ -29,11 +56,13 @@ const components = {
         <b>{text}</b>
       </div>
     ),
+    githubUrl: defaultGithubUrl,
     wrapper: wrapper.center,
     props: { text: 'Hello world, it works!' },
   },
   LottiePreview: loadComponent(() => import('./containers/LottiePreview'), {
     wrapper: wrapper.center,
+    githubUrl: getGithubUrl('./containers/LottiePreview'),
     props: {
       animationUrl:
         'https://assets5.lottiefiles.com/packages/lf20_mc6rrdlr.json',
@@ -42,12 +71,14 @@ const components = {
   Loader_DotsLoader: loadComponent(
     () => import('@src/components/base/DotsLoader'),
     {
+      githubUrl: getGithubUrl('@src/components/base/DotsLoader'),
       props: { color: 'gray', size: 'sm', align: 'center' },
     }
   ),
   ContentPlaceholder: loadComponent(
     () => import('./containers/ContentPlaceholder'),
     {
+      githubUrl: getGithubUrl('./containers/ContentPlaceholder'),
       props: { text: 'This is a placeholder', circle: false },
     }
   ),
@@ -55,6 +86,7 @@ const components = {
     () => import('./containers/TransitionsPreview'),
     {
       wrapper: wrapper.center,
+      githubUrl: getGithubUrl('./containers/TransitionsPreview'),
       props: {
         fadeInTransition: false,
         collapseTransition: false,
@@ -66,12 +98,16 @@ const components = {
       },
     }
   ),
-  TailwindPreview: loadComponent(() => import('./containers/TailwindPreview')),
+  TailwindPreview: loadComponent(() => import('./containers/TailwindPreview'), {
+    githubUrl: getGithubUrl('./containers/TailwindPreview'),
+  }),
   AntdPreview: loadComponent(() => import('./containers/AntdPreview'), {
+    githubUrl: getGithubUrl('./containers/AntdPreview/index.tsx'),
     wrapper: wrapper.center,
   }),
   LinkPreview: loadComponent(() => import('@src/components/LinkPreview'), {
     wrapper: wrapper.center,
+    githubUrl: getGithubUrl('@src/components/LinkPreview/index.tsx'),
     props: { url: 'https://github.com' },
   }),
 };

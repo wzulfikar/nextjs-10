@@ -37,7 +37,7 @@ export default function PreviewComponent() {
 
   // Extract Component, optional props, and optional wrapper class from `./components`.
   // Fallback to `{}` to handle invalid component (will result in 404).
-  const { Component, props = {}, wrapper = null } =
+  const { Component, props = {}, wrapper = null, githubUrl } =
     components[(guiData.component || component) as string] || {};
 
   useEffect(() => {
@@ -105,6 +105,7 @@ export default function PreviewComponent() {
           <DisGui
             bgColors={bgColors}
             componentKeys={componentKeys}
+            openInGithub={githubUrl}
             value={{ ...guiData, wrapper: guiData.wrapper || wrapper }}
             onChange={onChangeDisGui}
             previewProps={mergePreviewProps}

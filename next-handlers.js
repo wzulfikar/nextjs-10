@@ -35,7 +35,7 @@ const handlers = {
       },
       {
         source: '/github',
-        destination: 'https://github.com/wzulfikar/nextjs-10',
+        destination: process.env.NEXT_PUBLIC_GITHUB_REPO,
         permanent: false,
       },
       {

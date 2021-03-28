@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import * as dg from 'dis-gui';
+import Link from 'next/link';
+import { BiHomeCircle } from 'react-icons/bi';
+import { DiGithubBadge } from 'react-icons/Di';
 
 import useDarkMode from '@src/hooks/useDarkMode';
 
@@ -21,6 +24,7 @@ export default function DisGui({
   componentKeys,
   bgColors,
   value,
+  openInGithub,
   onChange,
   previewProps,
   onChangePreviewProps,
@@ -100,6 +104,33 @@ export default function DisGui({
               />
             )
           )}
+        </dg.Folder>
+
+        <dg.Folder label={`Links`} expanded={true}>
+          {openInGithub && (
+            <dg.Button
+              className="w-5"
+              label={
+                <a
+                  href={openInGithub}
+                  className="flex items-center justify-center"
+                >
+                  <DiGithubBadge className="w-4 h-4 mr-0.5" />
+                  Open in Github
+                </a>
+              }
+            />
+          )}
+          <dg.Button
+            label={
+              <Link href="/">
+                <a className="flex items-center justify-center h-4">
+                  <BiHomeCircle className="relative top-[-1px] mr-1" />
+                  Back to home
+                </a>
+              </Link>
+            }
+          />
         </dg.Folder>
 
         <dg.Select
