@@ -10,6 +10,12 @@
   top: -3px !important;
 }
 
+.ant-avatar.ant-avatar-icon > .anticon {
+  margin: 0;
+  top: -5px;
+  position: relative;
+}
+
 a.ant-btn {
   line-height: 30px !important;
 }
@@ -24,6 +30,10 @@ a.ant-btn {
   padding: 1rem;
 }
 
+.ant-tabs.ant-tabs-editable .ant-tabs-nav-add {
+  margin-left: 0.1rem;
+}
+
 /* Tailwind dark mode adjustments */
 
 .dark {
@@ -35,5 +45,14 @@ a.ant-btn {
   }
   .ant-radio-wrapper {
     color: white;
+  }
+  .ant-typography {
+    color: white;
+  }
+  .ant-tabs:not(.ant-tabs-editable) .ant-tabs-tab:not(.ant-tabs-tab-active) {
+    color: white;
+  }
+  .ant-divider {
+    border-top: 1px solid rgb(255 255 255 / 15%);
   }
 }

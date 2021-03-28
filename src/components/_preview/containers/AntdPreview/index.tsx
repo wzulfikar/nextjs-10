@@ -27,6 +27,11 @@ import ProgressWithCustomStroke from './ProgressWithCustomStroke';
 import Drawer from './Drawer';
 import Carousel from './Carousel';
 import Buttons from './Buttons';
+import AvatarGroup from './AvatarGroup';
+import Collapse from './Collapse';
+import Tabs from './Tabs';
+import TabsCloseable from './TabsCloseable';
+import Table from './Table';
 
 const { RangePicker } = DatePicker;
 
@@ -159,6 +164,26 @@ export default function AntdPreview() {
 
         <Cell url={Carousel.url}>
           <Carousel />
+        </Cell>
+
+        <Cell url={AvatarGroup.url}>
+          <AvatarGroup />
+        </Cell>
+
+        <Cell url={Collapse.url}>
+          <Collapse />
+        </Cell>
+
+        <Cell url={Tabs.url}>
+          <Tabs />
+        </Cell>
+
+        <Cell url={TabsCloseable.url}>
+          <TabsCloseable />
+        </Cell>
+
+        <Cell url={Table.url} colSpan="col-span-3">
+          <Table />
         </Cell>
 
         <Cell url="https://ant.design/components/calendar" colSpan="col-span-3">

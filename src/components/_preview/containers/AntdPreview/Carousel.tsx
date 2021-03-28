@@ -19,7 +19,7 @@ export default function CarouselDemo() {
   };
 
   return (
-    <div className="max-w-xs">
+    <div className="w-64">
       <Radio.Group
         onChange={onChangeRadio}
         value={dotPosition}
