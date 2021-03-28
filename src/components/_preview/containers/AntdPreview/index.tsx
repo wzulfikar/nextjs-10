@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react';
+import { useMemo, useEffect, useRef } from 'react';
 import {
   Menu,
   Dropdown,
@@ -25,17 +25,32 @@ import Progress from './Progress';
 import ProgressCircle from './ProgressCircle';
 import ProgressWithCustomStroke from './ProgressWithCustomStroke';
 import Drawer from './Drawer';
+import Carousel from './Carousel';
+import Buttons from './Buttons';
 
 const { RangePicker } = DatePicker;
-const { Option } = Select;
 
 export default function AntdPreview() {
+  const hideMsgRef = useRef(null);
+
   useEffect(() => {
-    const hide = message.info('This is a message', 0);
+    hideMsgRef.current = message.info(
+      <span>
+        This is a message.{' '}
+        <button onClick={closeMessage}>
+          <b>Close</b>
+        </button>
+      </span>,
+      0
+    );
     return () => {
-      hide();
+      hideMsgRef.current();
     };
-  }, []);
+  }, [closeMessage]);
+
+  function closeMessage() {
+    hideMsgRef.current();
+  }
 
   function onChange(...args) {
     console.log('onChange:', args);
@@ -103,10 +118,6 @@ export default function AntdPreview() {
           <RangePicker showTime />
         </Cell>
 
-        <Cell url="https://ant.design/components/date-picker/">
-          <PickerSize />
-        </Cell>
-
         <Cell url="https://ant.design/components/modal/">
           <ModalBasic />
           <ModalWithFooter />
@@ -114,44 +125,40 @@ export default function AntdPreview() {
           <ModalDialog />
         </Cell>
 
-        <Cell url="https://ant.design/components/button">
-          <Button>Default Button</Button>
-          <Button type="primary" onClick={onClick}>
-            Primary Button
-          </Button>
-          <Button type="link" onClick={onClick}>
-            Link Button
-          </Button>
-          <Button type="ghost" onClick={onClick}>
-            Ghost Button
-          </Button>
-          <Button type="dashed" onClick={onClick}>
-            Dashed Button
-          </Button>
+        <Cell url={Buttons.url}>
+          <Buttons />
         </Cell>
 
-        <Cell url="https://ant.design/components/spin/">
+        <Cell url={PickerSize.url}>
+          <PickerSize />
+        </Cell>
+
+        <Cell url={CardWithLoading.url}>
           <CardWithLoading />
         </Cell>
 
-        <Cell url="https://ant.design/components/popconfirm">
+        <Cell url={Popconfirm.url}>
           <Popconfirm />
         </Cell>
 
-        <Cell url="https://ant.design/components/progress/">
+        <Cell url={Progress.url}>
           <Progress />
         </Cell>
 
-        <Cell url="https://ant.design/components/progress/">
+        <Cell url={ProgressCircle.url}>
           <ProgressCircle />
         </Cell>
 
-        <Cell url="https://ant.design/components/progress/">
+        <Cell url={ProgressWithCustomStroke.url}>
           <ProgressWithCustomStroke />
         </Cell>
 
-        <Cell url="https://ant.design/components/drawer/">
+        <Cell url={Drawer.url}>
           <Drawer />
+        </Cell>
+
+        <Cell url={Carousel.url}>
+          <Carousel />
         </Cell>
 
         <Cell url="https://ant.design/components/calendar" colSpan="col-span-3">

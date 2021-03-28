@@ -1,5 +1,7 @@
 import { Space, Progress } from 'antd';
 
+ProgressWithCustomStroke.url = 'https://ant.design/components/progress/';
+
 export default function ProgressWithCustomStroke() {
   return (
     <Space direction="vertical">

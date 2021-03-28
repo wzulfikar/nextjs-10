@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Spin, Switch, Alert } from 'antd';
 
+CardWithLoading.url = 'https://ant.design/components/spin/';
+
 export default function CardWithLoading() {
   const [state, setState] = useState({ loading: false });
 

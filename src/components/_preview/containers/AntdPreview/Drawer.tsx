@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Drawer, Button, Radio, Space } from 'antd';
 
+DrawerDemo.url = 'https://ant.design/components/drawer/';
+
 export default function DrawerDemo() {
   const [state, setState] = useState({ visible: false, placement: 'left' });
 

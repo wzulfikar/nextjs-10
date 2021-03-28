@@ -3,6 +3,8 @@ import { DatePicker, Radio, Space } from 'antd';
 
 const { RangePicker } = DatePicker;
 
+PickerSizes.url = 'https://ant.design/components/date-picker/';
+
 /**
  * @see
  * [https://ant.design/components/date-picker/](https://ant.design/components/date-picker/)
