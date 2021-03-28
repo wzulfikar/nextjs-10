@@ -3,7 +3,7 @@ import * as dg from 'dis-gui';
 import Link from 'next/link';
 import { isMobile } from 'react-device-detect';
 import { BiHomeCircle } from 'react-icons/bi';
-import { DiGithubBadge } from 'react-icons/Di';
+import { DiGithubBadge } from 'react-icons/di';
 
 import useDarkMode from '@src/hooks/useDarkMode';
 
