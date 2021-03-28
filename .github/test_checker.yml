@@ -1,0 +1,4 @@
+# See docs: https://github.com/infection/tests-checker
+comment: "Hello! Please consider adding a test to make sure this change works as expected."
+fileExtensions: [".ts", ".js", ".tsx", ".jsx"]
+testDir: "__tests__"

@@ -1,0 +1,35 @@
+##
+# Configuration for welcome bot - https://github.com/behaviorbot/welcome
+##
+
+# Configuration for new-issue-welcome - https://github.com/behaviorbot/new-issue-welcome
+newIssueWelcomeComment: >
+  Thanks for opening your first issue here! Be sure to follow our issue guideline.
+
+# Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
+# Comment to be posted to on PRs from first time contributors in your repository
+newPRWelcomeComment: >
+  Thanks for opening your first PR here! Be sure to follow our PR guideline.
+
+##
+# Configuration for request-info - https://github.com/behaviorbot/request-info
+##
+
+# Comment to reply with (required)
+requestInfoReplyComment: >
+  Hello! Can you provide us with more info for this? And be sure to check our guideline.
+
+# *OPTIONAL* Label to be added to Issues and Pull Requests with insufficient information given
+requestInfoLabelToAdd: needs-more-info
+
+##
+# Configuration for todo bot - https://todo.jasonet.co
+##
+
+todo:
+  keyword: ["@TODO"]
+  bodyKeyword: ["@TODO_BODY"]
+  blobLines: 5
+  autoAssign: false
+  label: false
+  reopenClosed: false
