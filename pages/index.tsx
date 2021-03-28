@@ -1,7 +1,12 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import styles from '@src/styles/Home.module.css';
 import ToggleDarkMode from '@src/components/ToggleDarkMode';
+import { trackGoal, events } from '@src/lib/analytic';
+
+const utm =
+  'utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app';
 
 export default function Home() {
   return (
@@ -53,6 +58,47 @@ export default function Home() {
             <p>
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
+          </a>
+        </div>
+
+        <div
+          className={
+            'dark:text-white font-semibold flex justify-start w-full px-4 sm:px-7 mt-2'
+          }
+        >
+          <p>
+            More from{' '}
+            <a
+              className="underline"
+              onClick={() => trackGoal(events.OpenGithubRepo)}
+              href="/github"
+            >
+              this template:
+            </a>
+          </p>
+        </div>
+
+        <div
+          className={`${styles.grid} dark:text-white`}
+          style={{ marginTop: 0 }}
+        >
+          <Link href={`/_preview?${utm}`}>
+            <a className={styles.card}>
+              <h3>Preview &rarr;</h3>
+              <p>
+                Preview sample components at <code>/_preview</code>.
+              </p>
+            </a>
+          </Link>
+
+          <a
+            href={`/analytic?${utm}`}
+            className={styles.card}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h3>Analytic &rarr;</h3>
+            <p>View shared analytic dashboard for this Next.js template.</p>
           </a>
         </div>
       </main>

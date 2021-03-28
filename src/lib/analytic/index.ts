@@ -15,6 +15,10 @@ export const events: { [eventName: string]: Event } = {
     event: 'G3ERIPBN',
     centValue: 10,
   },
+  OpenGithubRepo: {
+    event: 'C96TPNHN',
+    centValue: 0,
+  },
 };
 
 /**

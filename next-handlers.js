@@ -36,12 +36,12 @@ const handlers = {
       {
         source: '/github',
         destination: 'https://github.com/wzulfikar/nextjs-10',
-        permanent: true,
+        permanent: false,
       },
       {
         source: '/analytic',
         destination: process.env.NEXT_PUBLIC_SHARE_ANALYTIC || '/404',
-        permanent: true,
+        permanent: false,
       },
     ];
   },
