@@ -1,4 +1,5 @@
 import lazyload from '@src/components/base/lazyload';
+import _getGithubUrl from '@src/lib/github/getGithubUrl';
 
 type ComponentOptions = {
   // Wrap component with wrapper class (eg. `max-w-md`)
@@ -31,7 +32,16 @@ const getGithubUrl = (previewPath: string) => {
     previewPath = previewPath.replace('./', 'src/components/_preview/');
   }
 
-  return `${githubRepo}/blob/main/${previewPath}`;
+  const repoParts = githubRepo.split('/');
+  const repoName = repoParts.pop();
+  const owner = repoParts.pop();
+
+  return _getGithubUrl({
+    owner,
+    repo: repoName,
+    branch: 'main',
+    file: previewPath,
+  });
 };
 
 const defaultGithubUrl = getGithubUrl('./components.tsx');
