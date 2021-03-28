@@ -94,7 +94,7 @@ export default function AntdPreview() {
   );
 
   return (
-    <div className="mt-[5rem] overflow-auto">
+    <div className="my-[5rem] overflow-auto">
       <div className="sm:grid sm:grid-cols-3 gap-3 px-3 max-w-6xl">
         <Cell url="https://ant.design/components/badge/">
           <Dropdown overlay={menu} placement="bottomCenter">
