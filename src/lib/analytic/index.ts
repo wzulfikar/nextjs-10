@@ -7,8 +7,12 @@ export type Event = {
 
 export const events: { [eventName: string]: Event } = {
   // Check if user clicked toggle dark mode button
-  ToggleDarkMode: {
+  DarkMode_Enabled: {
     event: '6ZNRDXMO',
+    centValue: 10,
+  },
+  DarkMode_Disabled: {
+    event: 'G3ERIPBN',
     centValue: 10,
   },
 };

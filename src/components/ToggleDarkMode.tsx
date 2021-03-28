@@ -3,6 +3,7 @@ import 'react-toggle/style.css';
 import { memo, useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import { HiSun, HiMoon } from 'react-icons/hi';
+import { usePrevious } from 'react-use';
 
 import useDarkMode from '@src/hooks/useDarkMode';
 import { trackGoal, events } from '@src/lib/analytic';
@@ -12,9 +13,18 @@ function ToggleDarkMode({ initialValue = true }) {
 
   const [checked, setChecked] = useState(initialValue);
 
+  const prevDarkMode = usePrevious(darkMode.value);
+
   useEffect(() => {
     setChecked(darkMode.value);
-    trackGoal(events.ToggleDarkMode);
+
+    if (!prevDarkMode && darkMode.value) {
+      // Track if dark mode has been enabled
+      trackGoal(events.DarkMode_Enabled);
+    } else if (prevDarkMode && !darkMode.value) {
+      // Only track `DarkMode_Disabled` if it was previously enabled
+      trackGoal(events.DarkMode_Disabled);
+    }
   }, [darkMode.value]);
 
   return (
