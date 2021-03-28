@@ -1,5 +1,18 @@
 import * as Fathom from 'fathom-client';
 
+export type Event = {
+  event: string;
+  centValue?: number;
+};
+
+export const events: { [eventName: string]: Event } = {
+  // Check if user clicked toggle dark mode button
+  ToggleDarkMode: {
+    event: '6ZNRDXMO',
+    centValue: 10,
+  },
+};
+
 /**
  * @description
  * Initiate your analytic handler. You can execute this
@@ -27,8 +40,8 @@ export function trackPageView() {
   }
 }
 
-export function trackGoal(event: string, value: number) {
-  Fathom.trackGoal(event, value);
+export function trackGoal({ event, centValue = 0 }: Event) {
+  Fathom.trackGoal(event, centValue);
 }
 
-export default { init, trackPageView, trackGoal };
+export default { init, trackPageView, trackGoal, events };

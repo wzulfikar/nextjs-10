@@ -5,6 +5,7 @@ import Toggle from 'react-toggle';
 import { HiSun, HiMoon } from 'react-icons/hi';
 
 import useDarkMode from '@src/hooks/useDarkMode';
+import { trackGoal, events } from '@src/lib/analytic';
 
 function ToggleDarkMode({ initialValue = true }) {
   const darkMode = useDarkMode(initialValue);
@@ -13,6 +14,7 @@ function ToggleDarkMode({ initialValue = true }) {
 
   useEffect(() => {
     setChecked(darkMode.value);
+    trackGoal(events.ToggleDarkMode);
   }, [darkMode.value]);
 
   return (
