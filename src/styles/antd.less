@@ -1,1 +1,21 @@
-@import '~antd/dist/antd.less';
+// Reorder imports from `~antd/dist/antd.less`:
+// - @import "~antd/lib/style/index.less"
+//   - @import './themes/index'
+//   - @import './core/index'
+// - @import "~antd/lib/style/components.less"
+
+// Add imports from "~antd/lib/style/themes/index.less"
+@import '~antd/lib/style/themes/default.less';
+
+// Import component styles. Build size won't be affected because
+// any unused components are excluded from the final build.
+@import '~antd/lib/style/components.less';
+
+// Add imports from "~antd/lib/style/core/index.less"
+@import '~antd/lib/style/mixins/index.less';
+@import '~antd/lib/style/core/base.less';
+@import '~antd/lib/style/core/iconfont.less';
+@import '~antd/lib/style/core/motion.less';
+
+// Don't import antd's global.less to prevent conflict with tailwind
+// @import '~antd/lib/style/core/global.less';
