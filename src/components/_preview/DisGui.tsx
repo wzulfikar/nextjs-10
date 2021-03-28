@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as dg from 'dis-gui';
 import Link from 'next/link';
+import { isMobile } from 'react-device-detect';
 import { BiHomeCircle } from 'react-icons/bi';
 import { DiGithubBadge } from 'react-icons/Di';
 
@@ -49,7 +50,11 @@ export default function DisGui({
 
   // Wrap dg.GUI so we can change its position at runtime
   const GuiWrapper = ({ children }) => (
-    <dg.GUI className="gui-wrapper" style={positions[position]}>
+    <dg.GUI
+      className="gui-wrapper"
+      style={positions[position]}
+      expanded={!isMobile}
+    >
       {children}
     </dg.GUI>
   );
