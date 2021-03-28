@@ -1,25 +1,7 @@
 import * as Fathom from 'fathom-client';
+import { Event } from './events';
 
-export type Event = {
-  event: string;
-  centValue?: number;
-};
-
-export const events: { [eventName: string]: Event } = {
-  // Check if user clicked toggle dark mode button
-  DarkMode_Enabled: {
-    event: '6ZNRDXMO',
-    centValue: 10,
-  },
-  DarkMode_Disabled: {
-    event: 'G3ERIPBN',
-    centValue: 10,
-  },
-  OpenGithubRepo: {
-    event: 'C96TPNHN',
-    centValue: 0,
-  },
-};
+export * from './events';
 
 /**
  * @description
@@ -52,4 +34,4 @@ export function trackGoal({ event, centValue = 0 }: Event) {
   Fathom.trackGoal(event, centValue);
 }
 
-export default { init, trackPageView, trackGoal, events };
+export default { init, trackPageView, trackGoal };
