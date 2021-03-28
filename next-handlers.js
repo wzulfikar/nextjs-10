@@ -38,6 +38,11 @@ const handlers = {
         destination: 'https://github.com/wzulfikar/nextjs-10',
         permanent: true,
       },
+      {
+        source: '/analytic',
+        destination: process.env.NEXT_PUBLIC_SHARE_ANALYTIC || '/404',
+        permanent: true,
+      },
     ];
   },
   /**
