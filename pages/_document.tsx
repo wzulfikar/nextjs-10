@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="antialiased">
+        <body className="antialiased sm:subpixel-antialiased md:antialiased">
           <script src="/darkmode-noflash.js" />
           <Main />
           <NextScript />
