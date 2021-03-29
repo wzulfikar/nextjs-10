@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useAsync } from 'react-use';
 
 import getMetadata from '@src/lib/unfurl/getMetadata';
-import LinkPreview from './element';
+import LinkPreview from './elements';
 
 type UnfurlProps = {
   url: string;
