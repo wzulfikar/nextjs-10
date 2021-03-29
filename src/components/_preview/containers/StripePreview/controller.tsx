@@ -1,23 +1,13 @@
 import { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { createCheckoutSession } from 'next-stripe/client';
+import {
+  createCheckoutSession,
+  createBillingPortalSession,
+} from 'next-stripe/client';
+import { useAsync } from 'react-use';
 
 import formatAmountForStripe from '@src/lib/stripe/formatAmountForStripe';
 import StripePreview from './elements';
-
-type LineItem = {
-  // Applicable if using preset price (`price` will be price id)
-  price?: string;
-
-  // Applicable if using custom price
-  name?: string;
-  amount?: number;
-  currency?: string;
-  description?: string;
-
-  quantity: number;
-  mode: 'subscription' | 'payment';
-};
 
 // Mock custom price
 const customPrice = {
@@ -31,48 +21,13 @@ const customPrice = {
   type: 'one_time',
 };
 
-async function checkoutProduct({
-  price,
-  name,
-  amount,
-  quantity,
-  currency,
-  mode,
-}: LineItem) {
-  const session = await createCheckoutSession({
-    success_url: window.location.href,
-    cancel_url: window.location.href,
-    line_items: [
-      {
-        price: price,
-        name: name,
-        amount: amount,
-        quantity: quantity,
-        currency: currency,
-      },
-    ],
-    payment_method_types: ['card'],
-
-    // Use `payment` mode if the `priceId` is one-time purchase
-    // or `subscription` if it's a recurring payment.
-    mode: mode,
-  });
-
-  const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
-  if (stripe) {
-    // Store payment intent for after-payment checking
-    localStorage.setItem('_stripeCheckoutSession', session.id);
-
-    stripe.redirectToCheckout({ sessionId: session.id });
-  }
-}
-
 export default function StripePreviewController({ prices }) {
   useEffect(() => {
     const session_id = localStorage.getItem('_stripeCheckoutSession');
     if (session_id) {
       console.log('session_id:', session_id);
-      fetch(`/api/check-payment?session_id=${session_id}`)
+
+      fetch(`/api/stripe/check-payment?session_id=${session_id}`)
         .then((res) => res.json())
         .then((paymentIntent) => {
           console.log('paymentIntent:', paymentIntent);
@@ -87,30 +42,91 @@ export default function StripePreviewController({ prices }) {
     }
   }, []);
 
+  const { value, loading, error } = useAsync(() =>
+    fetch(
+      `/api/stripe/get-current-plan?customer_id=${getCustomerId()}`
+    ).then((res) => res.json())
+  );
+
+  if (error) {
+    console.error('[stripe] could not get current plan:', error);
+  }
+
+  /**
+   * @description
+   * Dummy customer id (created for this demo).
+   *
+   * Name: Jerod Brekke
+   * Email: jerod29@ethereal.email
+   * Webmail: https://ethereal.email
+   * Password: `McAWyZGARG5zf3SvDU`
+   */
+  function getCustomerId() {
+    return 'cus_JCdi2hmQ4ggKhh';
+  }
+
   async function onCheckout(priceId, mode: 'subscription' | 'payment') {
     // Create stripe checkout session
     const qty = 1; // Assume user will buy one item
 
-    // Handle custom amount
     const isCustomAmount = priceId === customPrice.id;
 
-    if (isCustomAmount) {
-      await checkoutProduct({
-        name: priceId,
-        amount: formatAmountForStripe(
-          customPrice.unit_amount / 100,
-          customPrice.currency
-        ),
-        currency: customPrice.currency,
-        quantity: qty,
-        mode: 'payment',
-      });
-    } else {
-      await checkoutProduct({ price: priceId, quantity: qty, mode });
+    // Create line item based on custom amount or preset price
+    const lineItem = isCustomAmount
+      ? {
+          name: customPrice.id,
+          amount: formatAmountForStripe(
+            customPrice.unit_amount / 100,
+            customPrice.currency
+          ),
+          currency: customPrice.currency,
+          quantity: qty,
+        }
+      : {
+          price: priceId,
+          quantity: qty,
+        };
+
+    const session = await createCheckoutSession({
+      customer: getCustomerId(),
+      success_url: window.location.href,
+      cancel_url: window.location.href,
+      line_items: [lineItem],
+      payment_method_types: ['card'],
+
+      // Use `payment` mode if the `priceId` is one-time purchase
+      // or `subscription` if it's a recurring payment.
+      mode: mode,
+    });
+
+    // Store payment intent for after-payment checking
+
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+    if (stripe) {
+      localStorage.setItem('_stripeCheckoutSession', session.id);
+      stripe.redirectToCheckout({ sessionId: session.id });
     }
   }
 
+  async function onClickManageSubscription() {
+    const session = await createBillingPortalSession({
+      customer: getCustomerId(),
+      return_url: window.location.href,
+    });
+
+    window.location.href = session.url;
+  }
+
   return (
-    <StripePreview prices={[...prices, customPrice]} onCheckout={onCheckout} />
+    <StripePreview
+      currentPlan={
+        loading
+          ? '...'
+          : (value?.name && `${value.name} (${value.interval})`) || '(no plan)'
+      }
+      prices={[...prices, customPrice]}
+      onCheckout={onCheckout}
+      onClickManageSubscription={onClickManageSubscription}
+    />
   );
 }

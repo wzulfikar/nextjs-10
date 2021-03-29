@@ -67,31 +67,44 @@ function PriceList({ prices, onCheckout, recurringSuffix = null }) {
   );
 }
 
-export default function StripePreview({ prices, onCheckout }) {
+function Section({ title, children }) {
+  return (
+    <div className="flex flex-col mt-6">
+      <h3 className="text-lg mb-8 pb-4 pt-4 font-semibold text-green-600 border-b border-green-600">
+        {title}
+      </h3>
+      {children}
+    </div>
+  );
+}
+
+export default function StripePreview({
+  prices,
+  currentPlan,
+  onCheckout,
+  onClickManageSubscription,
+}) {
   const pricesByType = { one_time: [], recurring: [] };
   prices.forEach((price) => pricesByType[price.type].push(price));
 
   return (
     <div className="bg-gray-200 dark:bg-black dark:text-white min-h-screen px-4 py-8">
+      {/* Header */}
       <h1 className="text-2xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
         Stripe Checkout
       </h1>
+
+      {/* Content */}
       <div className="flex flex-col mx-auto max-w-4xl">
         <HintStripeTestCards />
 
         {/* One-time products */}
-        <div className="flex flex-col">
-          <h3 className="text-lg mb-8 pb-4 pt-4 font-semibold text-green-600 border-b border-green-600">
-            One-Time Payments
-          </h3>
+        <Section title="One-Time Payments">
           <PriceList prices={pricesByType.one_time} onCheckout={onCheckout} />
-        </div>
+        </Section>
 
         {/* Recurring products */}
-        <div className="flex flex-col">
-          <h3 className="text-lg mb-6 pb-4 pt-8 font-semibold text-green-600 border-b border-green-600">
-            Subscriptions
-          </h3>
+        <Section title="Subscriptions">
           <h4 className="pb-4">Pay monthly:</h4>
           <PriceList
             prices={pricesByType.recurring.filter(
@@ -108,13 +121,26 @@ export default function StripePreview({ prices, onCheckout }) {
             onCheckout={onCheckout}
             recurringSuffix="/ yr"
           />
-        </div>
-        <Link href="/">
-          <a className="my-2 mt-8 hover:text-blue-600">&larr; Back to home</a>
-        </Link>
-        <Link href="/_preview">
-          <a className="my-2 hover:text-blue-600">&larr; Back to /_preview</a>
-        </Link>
+
+          <div className="my-2 mt-8">
+            Current Plan: <b>{currentPlan}</b>.
+            <button
+              onClick={onClickManageSubscription}
+              className="underline px-2 my-2 hover:text-blue-600"
+            >
+              Manage subscription &rarr;
+            </button>
+          </div>
+        </Section>
+
+        <Section title="Navigation">
+          <Link href="/">
+            <a className="my-2 hover:text-blue-600">&larr; Back to home</a>
+          </Link>
+          <Link href="/_preview">
+            <a className="my-2 hover:text-blue-600">&larr; Back to /_preview</a>
+          </Link>
+        </Section>
       </div>
     </div>
   );
