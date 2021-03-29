@@ -2,6 +2,32 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { AiFillInfoCircle } from 'react-icons/ai';
 
+function HintStripeTestCards() {
+  return (
+    <div className="flex flex-col sm:flex-row pt-6 mb-1 text-sm text-gray-600 dark:text-gray-400">
+      <div className="flex flex-col sm:flex-row sm:items-center">
+        <AiFillInfoCircle className="mr-1" />
+        Use any of the{' '}
+        <a
+          className="sm:mx-1 underline"
+          href="https://stripe.com/docs/testing#cards"
+        >
+          Stripe test cards
+        </a>{' '}
+        during checkout.
+      </div>
+      <code className="ml-1 space-x-1">
+        (eg.
+        <span>4242</span>
+        <span>4242</span>
+        <span>4242</span>
+        <span>4242</span>)
+      </code>
+      {/* P.S: 4000000000003220 to trigger 3D Secure challenge flow */}
+    </div>
+  );
+}
+
 function PriceList({ prices, onCheckout, recurringSuffix = null }) {
   const [isCheckingOut, setIsCheckingOut] = useState(null);
 
@@ -51,27 +77,18 @@ export default function StripePreview({ prices, onCheckout }) {
         Stripe Checkout
       </h1>
       <div className="flex flex-col mx-auto max-w-4xl">
-        <p className="sm:flex mt-6 mb-1 text-sm text-gray-600 dark:text-gray-400">
-          <div className="flex flex-col sm:flex-row sm:items-center">
-            <AiFillInfoCircle className="mr-1" />
-            You can use Stripe test card during checkout:
-          </div>
-          <code className="ml-1 space-x-1">
-            <span>4242</span>
-            <span>4242</span>
-            <span>4242</span>
-            <span>4242</span>
-          </code>
-        </p>
+        <HintStripeTestCards />
+
         {/* One-time products */}
-        <div>
+        <div className="flex flex-col">
           <h3 className="text-lg mb-8 pb-4 pt-4 font-semibold text-green-600 border-b border-green-600">
             One-Time Payments
           </h3>
           <PriceList prices={pricesByType.one_time} onCheckout={onCheckout} />
         </div>
+
         {/* Recurring products */}
-        <div>
+        <div className="flex flex-col">
           <h3 className="text-lg mb-6 pb-4 pt-8 font-semibold text-green-600 border-b border-green-600">
             Subscriptions
           </h3>
