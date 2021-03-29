@@ -37,7 +37,7 @@ export default function PreviewComponent() {
 
   // Extract Component, optional props, and optional wrapper class from `./components`.
   // Fallback to `{}` to handle invalid component (will result in 404).
-  const { Component, props = {}, wrapper = null, githubUrl } =
+  const { Component, redirect, props = {}, wrapper = null, githubUrl } =
     components[(guiData.component || component) as string] || {};
 
   useEffect(() => {
@@ -45,6 +45,11 @@ export default function PreviewComponent() {
       setGuiData((data) => ({ ...data, component: router.query.component }));
     }
   }, [router.query.component]);
+
+  if (redirect) {
+    router.push(redirect);
+    return null;
+  }
 
   // Render nothing if `router.query.component` is not ready yet
   if (!component) return null;

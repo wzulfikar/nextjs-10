@@ -120,6 +120,9 @@ const components = {
     githubUrl: getGithubUrl('@src/components/LinkPreview/index.tsx'),
     props: { url: 'https://github.com' },
   }),
+  StripePreview: {
+    redirect: '/_preview/StripePreview',
+  },
 };
 
 export default components;

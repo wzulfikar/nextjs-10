@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 import { AiFillInfoCircle } from 'react-icons/ai';
 
 function PriceList({ prices, onCheckout, recurringSuffix = null }) {
@@ -50,12 +51,18 @@ export default function StripePreview({ prices, onCheckout }) {
         Stripe Checkout
       </h1>
       <div className="flex flex-col mx-auto max-w-4xl">
-        <p className="flex items-center mt-6 text-sm text-gray-600 dark:text-gray-400">
-          <AiFillInfoCircle className="mr-1" />
-          You can use Stripe test card during checkout:{' '}
-          <code className="ml-1">4242 4242 4242 4242</code>
+        <p className="sm:flex mt-6 mb-1 text-sm text-gray-600 dark:text-gray-400">
+          <div className="flex flex-col sm:flex-row sm:items-center">
+            <AiFillInfoCircle className="mr-1" />
+            You can use Stripe test card during checkout:
+          </div>
+          <code className="ml-1 space-x-1">
+            <span>4242</span>
+            <span>4242</span>
+            <span>4242</span>
+            <span>4242</span>
+          </code>
         </p>
-
         {/* One-time products */}
         <div>
           <h3 className="text-lg mb-8 pb-4 pt-4 font-semibold text-green-600 border-b border-green-600">
@@ -63,7 +70,6 @@ export default function StripePreview({ prices, onCheckout }) {
           </h3>
           <PriceList prices={pricesByType.one_time} onCheckout={onCheckout} />
         </div>
-
         {/* Recurring products */}
         <div>
           <h3 className="text-lg mb-6 pb-4 pt-8 font-semibold text-green-600 border-b border-green-600">
@@ -86,6 +92,12 @@ export default function StripePreview({ prices, onCheckout }) {
             recurringSuffix="/ yr"
           />
         </div>
+        <Link href="/">
+          <a className="my-2 mt-8 hover:text-blue-600">&larr; Back to home</a>
+        </Link>
+        <Link href="/_preview">
+          <a className="my-2 hover:text-blue-600">&larr; Back to /_preview</a>
+        </Link>
       </div>
     </div>
   );
