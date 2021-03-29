@@ -12,12 +12,14 @@
     "test:types": "yarn tsc",
     "husky:pre-commit": "lint-staged",
     "husky:pre-push": "concurrently \"yarn test\" \"yarn test:types\"",
-    "checkly:visual_tests": "cross-env LOCAL=true node ./checkly/visual_tests/public_pages.js"
+    "checkly:visual_tests": "cross-env LOCAL=true node ./checkly/visual_tests/public_pages.js",
+    "stripe:local-webhook": "stripe listen --forward-to=${BASE_URL:-localhost:3000}/api/webhook/stripe"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@headlessui/react": "^0.3.1",
     "@sentry/browser": "^6.2.3",
+    "@stripe/stripe-js": "^1.13.2",
     "@tailwindcss/jit": "^0.1.10",
     "@tailwindcss/line-clamp": "^0.2.0",
     "antd": "^4.14.1",
@@ -29,6 +31,7 @@
     "next": "10.0.9",
     "next-dark-mode": "^3.0.0",
     "next-plugin-antd-less": "^0.3.0",
+    "next-stripe": "^1.0.0-beta.9",
     "postcss": "^8.2.8",
     "react": "17.0.2",
     "react-device-detect": "^1.17.0",
