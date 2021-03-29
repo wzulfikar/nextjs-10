@@ -46,25 +46,15 @@ a.ant-btn {
 /* Tailwind dark mode adjustments */
 
 .dark {
-  .ant-progress-circle .ant-progress-text {
-    color: white;
-  }
-  .ant-progress-text {
-    color: white;
-  }
-  .ant-radio-wrapper {
-    color: white;
-  }
-  .ant-typography {
-    color: white;
-  }
-  .ant-tabs:not(.ant-tabs-editable) .ant-tabs-tab:not(.ant-tabs-tab-active) {
-    color: white;
-  }
-  .ant-divider {
-    border-top: 1px solid rgb(255 255 255 / 15%);
-  }
+  .ant-progress-text[title]:not([title='']),
+  .ant-radio-wrapper,
+  .ant-typography,
+  .ant-tabs:not(.ant-tabs-editable) .ant-tabs-tab:not(.ant-tabs-tab-active),
   .ant-btn.ant-btn-ghost {
     color: white;
+  }
+
+  .ant-divider {
+    border-top: 1px solid rgb(255 255 255 / 15%);
   }
 }
