@@ -13,6 +13,8 @@ export const siteName = baseUrl.split('://').pop();
 
 // See: https://github.com/garmeeh/next-seo
 export default {
+  title: defaultTitle,
+  description: defaultDescription,
   openGraph: {
     title: defaultTitle,
     description: defaultDescription,
