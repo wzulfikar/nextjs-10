@@ -34,18 +34,24 @@ export default function StripePreviewController({ prices }) {
           console.log('paymentIntent:', paymentIntent);
 
           if (paymentIntent.statusCode === 500) {
-            trackGoal('StripePreview_PaymentFailed');
-
             alert('Payment failed: ' + paymentIntent.message);
-          } else {
+            return;
+          }
+
+          if (paymentIntent.payment_status === 'paid') {
             trackGoal(
               'StripePreview_PaymentSuccessful',
               paymentIntent.amount_total
             );
-
-            alert('Payment status: ' + paymentIntent.payment_status);
-            localStorage.removeItem('_stripeCheckoutSession');
+          } else {
+            trackGoal(
+              'StripePreview_PaymentFailed',
+              paymentIntent.amount_total
+            );
           }
+
+          alert('Payment status: ' + paymentIntent.payment_status);
+          localStorage.removeItem('_stripeCheckoutSession');
         });
     }
   }, []);
