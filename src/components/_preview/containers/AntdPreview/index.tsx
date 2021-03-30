@@ -1,3 +1,9 @@
+// Use `require` instead of `import` to include styles from less files.
+// Otherwise the styles will be applied in `next dev` but not in production.
+// See: https://github.com/SolidZORO/next-plugin-antd-less#tips
+require('@src/styles/antd.less');
+require('@src/styles/tailwind-antd-compat.less');
+
 import { useMemo, useEffect, useRef } from 'react';
 import { Menu, Dropdown, Button, DatePicker, message } from 'antd';
 
