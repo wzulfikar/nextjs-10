@@ -4,9 +4,8 @@ import { DiGithubBadge } from 'react-icons/di';
 
 import styles from '@src/styles/Home.module.css';
 import ToggleDarkMode from '@src/components/ToggleDarkMode';
-import { trackGoal } from '@src/lib/analytic';
-import { events } from '@src/config/analytic';
 import getGithubUrl from '@src/lib/github/getGithubUrl';
+import trackGoal from '@src/utils/trackGoal';
 
 const githubRepo = process.env.NEXT_PUBLIC_GITHUB_REPO;
 const repoParts = githubRepo.split('/');
@@ -36,7 +35,7 @@ export default function Home() {
               title="Open pages/index.tsx in Github"
               className="hover:underline"
               href={githubUrl}
-              onClick={() => trackGoal(events.OpenGithubRepo)}
+              onClick={() => trackGoal('OpenGithubRepo')}
             >
               pages/index.tsx
               <DiGithubBadge className="ml-1 h-6 w-6 inline relative -top-0.5" />

@@ -6,8 +6,7 @@ import { HiSun, HiMoon } from 'react-icons/hi';
 import { usePrevious } from 'react-use';
 
 import useDarkMode from '@src/hooks/useDarkMode';
-import { trackGoal } from '@src/lib/analytic';
-import { events } from '@src/config/analytic';
+import trackGoal from '@src/utils/trackGoal';
 
 function ToggleDarkMode({ initialValue = true }) {
   const darkMode = useDarkMode(initialValue);
@@ -21,10 +20,10 @@ function ToggleDarkMode({ initialValue = true }) {
 
     if (!prevDarkMode && darkMode.value) {
       // Track if dark mode has been enabled
-      trackGoal(events.DarkMode_Enabled);
+      trackGoal('DarkMode_Enabled');
     } else if (prevDarkMode && !darkMode.value) {
       // Only track `DarkMode_Disabled` if it was previously enabled
-      trackGoal(events.DarkMode_Disabled);
+      trackGoal('DarkMode_Disabled');
     }
   }, [darkMode.value]);
 

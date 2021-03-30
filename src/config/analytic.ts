@@ -8,7 +8,7 @@ export const events = {
     event: 'G3ERIPBN',
     centValue: 10,
   },
-  OpenGithubRepo: {
+  LandingPage_OpenGithubRepo: {
     event: 'C96TPNHN',
   },
 };
