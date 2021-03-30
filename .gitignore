@@ -36,3 +36,4 @@ yarn-error.log*
 .tsbuildinfo
 .vscode/settings.json
 checkly/_screenshots
+public/sitemap.xml

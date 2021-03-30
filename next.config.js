@@ -1,3 +1,4 @@
+const sitemap = require('nextjs-sitemap-generator');
 const withAntdLess = require('next-plugin-antd-less');
 
 const nextHandlers = require('./next-handlers.js');
@@ -8,6 +9,15 @@ if (process.env.ANALYZE === 'true') {
     enabled: true,
   });
 }
+
+// Generate sitemap.
+// See: https://github.com/IlusionDev/nextjs-sitemap-generator
+sitemap({
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
+  pagesDirectory: __dirname + '/pages',
+  targetDirectory: 'public/',
+  ignoredPaths: ['api', '_preview'],
+});
 
 const bundle = withAntdLess({
   ...nextHandlers,
