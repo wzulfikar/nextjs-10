@@ -3,7 +3,7 @@ import { Client as Styletron } from 'styletron-engine-atomic';
 import { Provider as StyletronProvider } from 'styletron-react';
 import { LightTheme, BaseProvider } from 'baseui';
 
-import GridCell from '../GridCell';
+import Grid from '../Grid';
 
 import DatePicker from './DatePicker';
 import DragAndDrop from './DragAndDrop';
@@ -23,19 +23,19 @@ export default function BaseWebPreview() {
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <div className="my-5 overflow-auto">
-          <div className="sm:grid sm:grid-cols-3 gap-3 px-3 max-w-6xl">
-            <GridCell {...DatePicker}>
+          <Grid title="Base Web Preview">
+            <Grid.Cell {...DatePicker}>
               <DatePicker />
-            </GridCell>
+            </Grid.Cell>
 
-            <GridCell {...DragAndDrop}>
+            <Grid.Cell {...DragAndDrop}>
               <DragAndDrop />
-            </GridCell>
+            </Grid.Cell>
 
-            <GridCell {...PinCode}>
+            <Grid.Cell {...PinCode}>
               <PinCode />
-            </GridCell>
-          </div>
+            </Grid.Cell>
+          </Grid>
         </div>
       </BaseProvider>
     </StyletronProvider>

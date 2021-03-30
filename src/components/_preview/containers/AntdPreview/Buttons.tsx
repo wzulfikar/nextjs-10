@@ -1,5 +1,6 @@
 import { Space, Button } from 'antd';
 
+ButtonsDemo.title = 'Buttons';
 ButtonsDemo.url = 'https://ant.design/components/button';
 
 export default function ButtonsDemo() {

@@ -1,5 +1,6 @@
 import { Progress } from 'antd';
 
+ProgressDemo.title = 'Progress';
 ProgressDemo.url = 'https://ant.design/components/progress/';
 
 export default function ProgressDemo() {

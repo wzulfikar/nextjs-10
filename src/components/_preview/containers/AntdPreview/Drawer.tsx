@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Drawer, Button, Radio, Space } from 'antd';
 
+DrawerDemo.title = 'Drawer';
 DrawerDemo.url = 'https://ant.design/components/drawer/';
 
 export default function DrawerDemo() {

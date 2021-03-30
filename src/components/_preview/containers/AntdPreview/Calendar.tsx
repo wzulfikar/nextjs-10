@@ -1,5 +1,7 @@
 import { Calendar, Badge } from 'antd';
 
+CalendarDemo.title = 'Calendar';
+
 function getListData(value) {
   let listData;
   switch (value.date()) {

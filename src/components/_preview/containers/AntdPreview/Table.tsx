@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Table, Button, Space } from 'antd';
 
+TableDemo.title = 'Table';
 TableDemo.url = 'https://ant.design/components/table/';
 
 const data = [

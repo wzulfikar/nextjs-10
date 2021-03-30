@@ -6,6 +6,7 @@ function confirm() {
   message.info('Clicked on Yes.');
 }
 
+PopconfirmDemo.title = 'Popconfirm';
 PopconfirmDemo.url = 'https://ant.design/components/popconfirm';
 
 export default function PopconfirmDemo() {

@@ -1,5 +1,6 @@
 import { Space, Progress } from 'antd';
 
+ProgressWithCustomStroke.title = 'ProgressWithCustomStroke';
 ProgressWithCustomStroke.url = 'https://ant.design/components/progress/';
 
 export default function ProgressWithCustomStroke() {

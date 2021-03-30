@@ -1,19 +1,12 @@
 import { useMemo, useEffect, useRef } from 'react';
-import {
-  Menu,
-  Dropdown,
-  Button,
-  Select,
-  DatePicker,
-  Space,
-  message,
-} from 'antd';
-import { FiExternalLink } from 'react-icons/fi';
+import { Menu, Dropdown, Button, DatePicker, message } from 'antd';
+
+import Grid from '../Grid';
 
 import Badge from './Badge';
 import DynamicBadge from './DynamicBadge';
 import SwitchablePicker from './SwitchablePicker';
-import PickerSize from './PickerSize';
+import DatePickerSize from './DatePickerSize';
 import ModalBasic from './ModalBasic';
 import ModalDraggable from './ModalDraggable';
 import ModalDialog from './ModalDialog';
@@ -75,28 +68,13 @@ export default function AntdPreview() {
     []
   );
 
-  const Cell = ({ url = null, children = null, colSpan = '' }) => (
-    <div
-      className={`${colSpan} group bg-gray-300 dark:bg-gray-700 p-4 mb-3 sm:mb-0 relative`}
-    >
-      {url && (
-        <a
-          className="hidden group-hover:block text-blue-500 absolute right-2 top-1.5"
-          rel="noopener noreferrer"
-          href={url}
-          target="_blank"
-        >
-          <FiExternalLink />
-        </a>
-      )}
-      <Space direction="vertical">{children}</Space>
-    </div>
-  );
-
   return (
     <div className="my-[5rem] overflow-auto">
-      <div className="sm:grid sm:grid-cols-3 gap-3 px-3 max-w-6xl">
-        <Cell url="https://ant.design/components/badge/">
+      <Grid title="Antd Preview">
+        <Grid.Cell
+          title="Uncategorized"
+          url="https://ant.design/components/badge/"
+        >
           <Dropdown overlay={menu} placement="bottomCenter">
             <Button>Hello from ant design!</Button>
           </Dropdown>
@@ -104,92 +82,106 @@ export default function AntdPreview() {
           <Badge />
 
           <DynamicBadge />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url="https://ant.design/components/date-picker/">
-          <DatePicker onChange={onChange} />
-          <DatePicker onChange={onChange} picker="week" />
-          <DatePicker onChange={onChange} picker="month" />
-          <DatePicker onChange={onChange} picker="quarter" />
+        <Grid.Cell
+          title="DatePicker"
+          url="https://ant.design/components/date-picker/"
+        >
+          <div className="space-x-2">
+            <DatePicker onChange={onChange} />
+            <DatePicker onChange={onChange} picker="week" />
+          </div>
+          <div className="space-x-2">
+            <DatePicker onChange={onChange} picker="month" />
+            <DatePicker onChange={onChange} picker="quarter" />
+          </div>
           <DatePicker onChange={onChange} picker="year" />
           <SwitchablePicker />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url="https://ant.design/components/date-picker/">
+        <Grid.Cell
+          title="RangePicker"
+          url="https://ant.design/components/date-picker/"
+        >
           <RangePicker />
           <RangePicker picker="week" />
           <RangePicker picker="month" />
           <RangePicker picker="year" />
           <RangePicker showTime />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url="https://ant.design/components/modal/">
+        <Grid.Cell title="Modals" url="https://ant.design/components/modal/">
           <ModalBasic />
           <ModalWithFooter />
           <ModalDraggable />
           <ModalDialog />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Buttons.url}>
+        <Grid.Cell {...Buttons}>
           <Buttons />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={PickerSize.url}>
-          <PickerSize />
-        </Cell>
+        <Grid.Cell {...DatePickerSize}>
+          <DatePickerSize />
+        </Grid.Cell>
 
-        <Cell url={CardWithLoading.url}>
+        <Grid.Cell {...CardWithLoading}>
           <CardWithLoading />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Popconfirm.url}>
+        <Grid.Cell {...Popconfirm}>
           <Popconfirm />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Progress.url}>
+        <Grid.Cell {...Progress}>
           <Progress />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={ProgressCircle.url}>
+        <Grid.Cell {...ProgressCircle}>
           <ProgressCircle />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={ProgressWithCustomStroke.url}>
+        <Grid.Cell {...ProgressWithCustomStroke}>
           <ProgressWithCustomStroke />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Drawer.url}>
+        <Grid.Cell {...Drawer}>
           <Drawer />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Carousel.url}>
+        <Grid.Cell {...Carousel}>
           <Carousel />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={AvatarGroup.url}>
+        <Grid.Cell {...AvatarGroup}>
           <AvatarGroup />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Collapse.url}>
+        <Grid.Cell {...Collapse}>
           <Collapse />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Tabs.url}>
+        <Grid.Cell {...Tabs}>
           <Tabs />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={TabsCloseable.url}>
+        <Grid.Cell {...TabsCloseable}>
           <TabsCloseable />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url={Table.url} colSpan="col-span-3">
+        <Grid.Cell {...Table} colspan="col-span-3">
           <Table />
-        </Cell>
+        </Grid.Cell>
 
-        <Cell url="https://ant.design/components/calendar" colSpan="col-span-3">
+        <Grid.Cell
+          title="Calendar"
+          url="https://ant.design/components/calendar"
+          colspan="col-span-3"
+        >
           <Calendar />
-        </Cell>
-      </div>
+        </Grid.Cell>
+      </Grid>
     </div>
   );
 }

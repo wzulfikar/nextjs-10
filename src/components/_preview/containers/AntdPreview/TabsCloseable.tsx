@@ -4,6 +4,9 @@ import { Typography, Tabs } from 'antd';
 const { TabPane } = Tabs;
 const { Text } = Typography;
 
+TabsCloseable.title = 'TabsCloseable';
+TabsCloseable.url = 'https://ant.design/components/tabs/';
+
 const initialPanes = [
   { title: 'Tab 1', content: <Text>Content of Tab 1</Text>, key: '1' },
   { title: 'Tab 2', content: <Text>Content of Tab 2</Text>, key: '2' },
@@ -14,8 +17,6 @@ const initialPanes = [
     closable: false,
   },
 ];
-
-TabsCloseable.url = 'https://ant.design/components/tabs/';
 
 export default function TabsCloseable() {
   let newTabIndex = 0;

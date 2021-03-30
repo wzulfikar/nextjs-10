@@ -1,6 +1,7 @@
 import { Space, Avatar, Divider, Tooltip } from 'antd';
 import { UserOutlined, AntDesignOutlined } from '@ant-design/icons';
 
+AvatarGroup.title = 'AvatarGroup';
 AvatarGroup.url = 'https://ant.design/components/avatar/';
 
 const avatarImage = 'https://picsum.photos/seed/picsum/200/200';

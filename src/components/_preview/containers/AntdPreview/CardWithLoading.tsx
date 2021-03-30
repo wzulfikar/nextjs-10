@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Spin, Switch, Alert } from 'antd';
 
+CardWithLoading.title = 'CardWithLoading';
 CardWithLoading.url = 'https://ant.design/components/spin/';
 
 export default function CardWithLoading() {

@@ -1,5 +1,6 @@
 import { Space, Progress } from 'antd';
 
+ProgressCircle.title = 'ProgressCircle';
 ProgressCircle.url = 'https://ant.design/components/progress/';
 
 export default function ProgressCircle() {

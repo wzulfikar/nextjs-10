@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Carousel, Radio, RadioChangeEvent } from 'antd';
 
+CarouselDemo.title = 'Carousel';
+CarouselDemo.url = 'https://ant.design/components/carousel/';
+
 const contentStyle = {
   height: '160px',
   color: '#fff',
@@ -8,8 +11,6 @@ const contentStyle = {
   textAlign: 'center' as any,
   background: '#364d79',
 };
-
-CarouselDemo.url = 'https://ant.design/components/carousel/';
 
 export default function CarouselDemo() {
   const [dotPosition, setDotPosition] = useState('top');

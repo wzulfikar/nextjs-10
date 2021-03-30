@@ -2,6 +2,7 @@ import { Collapse } from 'antd';
 
 const { Panel } = Collapse;
 
+CollapseDemo.title = 'Collapse';
 CollapseDemo.url = 'https://ant.design/components/collapse/';
 
 function callback(key) {

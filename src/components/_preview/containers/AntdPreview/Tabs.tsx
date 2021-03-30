@@ -4,6 +4,7 @@ import { Typography, Tabs, Radio, Space } from 'antd';
 const { TabPane } = Tabs;
 const { Text } = Typography;
 
+TabsDemo.title = 'Tabs';
 TabsDemo.url = 'https://ant.design/components/tabs/';
 
 export default function TabsDemo() {
