@@ -1,5 +1,7 @@
 import { FiExternalLink } from 'react-icons/fi';
 
+import getGithubUrl from '../getGithubUrl';
+
 Grid.Cell = Cell;
 
 /**
@@ -19,8 +21,11 @@ function Cell({ title, url, colspan = '', children }) {
       className={`${colspan} group bg-gray-300 dark:bg-gray-700 p-4 pt-8 mb-3 sm:mb-0 relative`}
     >
       <div className="absolute text-gray-700 dark:text-gray-400 top-1 text-sm font-medium w-full">
-        <span>{title}</span>
+        <a title="Open in Github" href={getGithubUrl(title)}>
+          {title}
+        </a>
         <a
+          title="Go to documentation site"
           className="absolute top-0.5 right-6 hidden group-hover:block text-gray-800 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-500"
           rel="noopener noreferrer"
           href={url}

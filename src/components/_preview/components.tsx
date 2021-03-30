@@ -1,5 +1,6 @@
 import lazyload from '@src/components/base/lazyload';
-import _getGithubUrl from '@src/lib/github/getGithubUrl';
+
+import getGithubUrl from './getGithubUrl';
 
 type ComponentOptions = {
   // Wrap component with wrapper class (eg. `max-w-md`)
@@ -12,36 +13,6 @@ type ComponentOptions = {
   // component simple, only expose props that you want to control
   // from the preview page.
   props?: any;
-};
-
-const githubRepo = process.env.NEXT_PUBLIC_GITHUB_REPO;
-
-const getGithubUrl = (previewPath: string) => {
-  // Append .tsx extension if not exist
-  if (!previewPath.endsWith('.tsx')) {
-    previewPath += '.tsx';
-  }
-
-  // Resolve absolute import
-  if (previewPath.startsWith('@src')) {
-    previewPath = previewPath.replace('@src', 'src');
-  }
-
-  // Resolve relative path
-  if (previewPath.startsWith('./')) {
-    previewPath = previewPath.replace('./', 'src/components/_preview/');
-  }
-
-  const repoParts = githubRepo.split('/');
-  const repoName = repoParts.pop();
-  const owner = repoParts.pop();
-
-  return _getGithubUrl({
-    owner,
-    repo: repoName,
-    branch: 'main',
-    file: previewPath,
-  });
 };
 
 const defaultGithubUrl = getGithubUrl('./components.tsx');
