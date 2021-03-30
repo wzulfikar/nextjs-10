@@ -12,6 +12,10 @@ if (process.env.ANALYZE === 'true') {
 const bundle = withAntdLess({
   ...nextHandlers,
 
+  // Uncomment to enable source map in production build.
+  // See: https://nextjs.org/docs/advanced-features/source-maps
+  // productionBrowserSourceMaps: true,
+
   // See: https://github.com/SolidZORO/next-plugin-antd-less
   modifyVars: { '@primary-color': '#5046e5' },
 
