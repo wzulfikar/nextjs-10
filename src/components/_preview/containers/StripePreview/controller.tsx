@@ -27,7 +27,7 @@ export default function StripePreviewController({ prices }) {
     if (session_id) {
       console.log('session_id:', session_id);
 
-      fetch(`/api/stripe/check-payment?session_id=${session_id}`)
+      fetch(`/api/stripe/checkPayment?session_id=${session_id}`)
         .then((res) => res.json())
         .then((paymentIntent) => {
           console.log('paymentIntent:', paymentIntent);
@@ -44,12 +44,12 @@ export default function StripePreviewController({ prices }) {
 
   const { value, loading, error } = useAsync(() =>
     fetch(
-      `/api/stripe/get-current-plan?customer_id=${getCustomerId()}`
+      `/api/stripe/getCustomerPlans?customer_id=${getCustomerId()}`
     ).then((res) => res.json())
   );
 
   if (error) {
-    console.error('[stripe] could not get current plan:', error);
+    console.error('[stripe] getCustomerPlans failed:', error);
   }
 
   /**
@@ -117,13 +117,15 @@ export default function StripePreviewController({ prices }) {
     window.location.href = session.url;
   }
 
+  // Append "N more" if user has multiple subcsriptions.
+  const currentPlan =
+    value?.length &&
+    `${value[0].product.name} (${value[0].interval})` +
+      (value.length > 1 && ` and ${value.length - 1} more`);
+
   return (
     <StripePreview
-      currentPlan={
-        loading
-          ? '...'
-          : (value?.name && `${value.name} (${value.interval})`) || '(no plan)'
-      }
+      currentPlan={loading ? '...' : currentPlan || '(no plan)'}
       prices={[...prices, customPrice]}
       onCheckout={onCheckout}
       onClickManageSubscription={onClickManageSubscription}
