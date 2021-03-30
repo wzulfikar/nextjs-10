@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
+    "@feedback-fish/react": "^1.2.1",
     "@headlessui/react": "^0.3.1",
     "@sentry/browser": "^6.2.3",
     "@stripe/stripe-js": "^1.13.2",
