@@ -70,10 +70,14 @@ export default function AntdPreview() {
 
   return (
     <div className="my-[5rem] overflow-auto">
-      <Grid title="Antd Preview">
+      <Grid
+        title="Antd Preview"
+        previewPath="@src/components/_preview/containers/AntdPreview"
+      >
         <Grid.Cell
           title="Uncategorized"
           url="https://ant.design/components/badge/"
+          noExternalFile
         >
           <Dropdown overlay={menu} placement="bottomCenter">
             <Button>Hello from ant design!</Button>
@@ -87,6 +91,7 @@ export default function AntdPreview() {
         <Grid.Cell
           title="DatePicker"
           url="https://ant.design/components/date-picker/"
+          noExternalFile
         >
           <div className="space-x-2">
             <DatePicker onChange={onChange} />
@@ -103,6 +108,7 @@ export default function AntdPreview() {
         <Grid.Cell
           title="RangePicker"
           url="https://ant.design/components/date-picker/"
+          noExternalFile
         >
           <RangePicker />
           <RangePicker picker="week" />
@@ -111,7 +117,11 @@ export default function AntdPreview() {
           <RangePicker showTime />
         </Grid.Cell>
 
-        <Grid.Cell title="Modals" url="https://ant.design/components/modal/">
+        <Grid.Cell
+          title="Modals"
+          url="https://ant.design/components/modal/"
+          noExternalFile
+        >
           <ModalBasic />
           <ModalWithFooter />
           <ModalDraggable />

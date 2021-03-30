@@ -24,7 +24,10 @@ export default function BaseWebPreview() {
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <div className="my-5 overflow-auto">
-          <Grid title="Base Web Preview">
+          <Grid
+            title="Base Web Preview"
+            previewPath="@src/components/_preview/containers/BaseWebPreview"
+          >
             <Grid.Cell {...DatePicker}>
               <DatePicker />
             </Grid.Cell>
