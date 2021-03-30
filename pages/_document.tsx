@@ -4,7 +4,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <body className="antialiased sm:subpixel-antialiased md:antialiased">
           <script src="/darkmode-noflash.js" />
           <Main />

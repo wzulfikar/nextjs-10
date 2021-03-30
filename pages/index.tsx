@@ -22,11 +22,6 @@ const githubUrl = getGithubUrl({
 export default function Home() {
   return (
     <div className={`${styles.container} dark:bg-[#111] vercel`}>
-      <Head>
-        <title>Next.js 10 Template</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           <span className="dark:text-white">Welcome to</span>{' '}
