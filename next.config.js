@@ -39,6 +39,13 @@ const bundle = withAntdLess({
   // Other Config Here...
 
   webpack(config) {
+    // `antd` needs moment and moment will include all its locales by default.
+    // We use `moment-locales-webpack-plugin` to remove unused locales from our build.
+    if (process.env.NODE_ENV === 'production') {
+      const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+      config.plugins.push(new MomentLocalesPlugin());
+    }
+
     return config;
   },
 });
