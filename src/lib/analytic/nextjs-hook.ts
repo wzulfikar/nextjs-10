@@ -7,9 +7,10 @@ export default function useAnalytic() {
   const router = useRouter();
   useEffect(() => {
     analytic.init();
+    analytic.trackPageview(); // Track initial page
 
     function onRouteChangeComplete() {
-      analytic.trackPageView();
+      analytic.trackPageview();
     }
 
     router.events.on('routeChangeComplete', onRouteChangeComplete);

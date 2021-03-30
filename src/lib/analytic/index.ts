@@ -25,7 +25,7 @@ export function init() {
   }
 }
 
-export function trackPageView() {
+export function trackPageview() {
   if (process.env.NODE_ENV === 'production') {
     // You can replace this code with your preferred analytic
     Fathom.trackPageview();
@@ -36,4 +36,4 @@ export function trackGoal({ event, centValue = 0 }: Event) {
   Fathom.trackGoal(event, centValue);
 }
 
-export default { init, trackPageView, trackGoal };
+export default { init, trackPageview, trackGoal };
