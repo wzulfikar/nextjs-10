@@ -3,6 +3,8 @@ import { FiExternalLink } from 'react-icons/fi';
 
 import getGithubUrl from '../getGithubUrl';
 
+import trackGoal from '@src/utils/trackGoal';
+
 Grid.Cell = Cell;
 
 const ctx = createContext({ previewPath: null });
@@ -39,6 +41,7 @@ function Cell({ title, url, colspan = '', noExternalFile = false, children }) {
           title="Open in Github"
           className="hover:text-blue-500 dark:hover:text-blue-500"
           href={githubUrl}
+          onClick={() => trackGoal('Preview_GridCell_ClickOpenInGithub')}
         >
           {title}
         </a>
@@ -48,6 +51,7 @@ function Cell({ title, url, colspan = '', noExternalFile = false, children }) {
           rel="noopener noreferrer"
           href={url}
           target="_blank"
+          onClick={() => trackGoal('Preview_GridCell_ClickOpenDocsSite')}
         >
           <FiExternalLink />
         </a>

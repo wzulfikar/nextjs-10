@@ -6,6 +6,7 @@ import { BiHomeCircle } from 'react-icons/bi';
 import { DiGithubBadge } from 'react-icons/di';
 
 import useDarkMode from '@src/hooks/useDarkMode';
+import trackGoal from '@src/utils/trackGoal';
 
 const positions = {
   topLeft: { top: '0px', left: '0px' },
@@ -118,6 +119,7 @@ export default function DisGui({
               label={
                 <a
                   href={openInGithub}
+                  onClick={() => trackGoal('Preview_ClickOpenInGithub')}
                   className="flex items-center justify-center"
                 >
                   <DiGithubBadge className="w-4 h-4 mr-0.5" />
@@ -129,7 +131,10 @@ export default function DisGui({
           <dg.Button
             label={
               <Link href="/">
-                <a className="flex items-center justify-center h-4">
+                <a
+                  onClick={() => trackGoal('Preview_ClickBackToHome')}
+                  className="flex items-center justify-center h-4"
+                >
                   <BiHomeCircle className="relative top-[-1px] mr-1" />
                   Back to home
                 </a>

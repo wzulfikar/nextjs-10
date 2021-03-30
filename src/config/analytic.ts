@@ -11,6 +11,18 @@ export const events = {
   LandingPage_OpenGithubRepo: {
     event: 'C96TPNHN',
   },
+  Preview_ClickOpenInGithub: {
+    event: 'HU1MBMKU',
+  },
+  Preview_ClickBackToHome: {
+    event: '4PL0UQJO',
+  },
+  Preview_GridCell_ClickOpenDocsSite: {
+    event: 'YXEC1CFI',
+  },
+  Preview_GridCell_ClickOpenInGithub: {
+    event: 'XDGII22Y',
+  },
 };
 
 export default { events };

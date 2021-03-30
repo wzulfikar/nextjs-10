@@ -35,7 +35,7 @@ export default function Home() {
               title="Open pages/index.tsx in Github"
               className="hover:underline"
               href={githubUrl}
-              onClick={() => trackGoal('OpenGithubRepo')}
+              onClick={() => trackGoal('LandingPage_OpenGithubRepo')}
             >
               pages/index.tsx
               <DiGithubBadge className="ml-1 h-6 w-6 inline relative -top-0.5" />
