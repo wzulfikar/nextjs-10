@@ -115,6 +115,10 @@ const components = {
     githubUrl: getGithubUrl('./containers/AntdPreview/index.tsx'),
     wrapper: wrapper.center,
   }),
+  BaseWebPreview: loadComponent(() => import('./containers/BaseWebPreview'), {
+    githubUrl: getGithubUrl('./containers/BaseWebPreview/index.tsx'),
+    wrapper: wrapper.center,
+  }),
   LinkPreview: loadComponent(() => import('@src/components/LinkPreview'), {
     wrapper: wrapper.center,
     githubUrl: getGithubUrl('@src/components/LinkPreview/index.tsx'),
