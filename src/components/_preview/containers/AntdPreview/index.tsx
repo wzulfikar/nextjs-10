@@ -93,14 +93,13 @@ export default function AntdPreview() {
           url="https://ant.design/components/date-picker/"
           noExternalFile
         >
-          <div className="space-x-2">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 w-full">
             <DatePicker onChange={onChange} />
             <DatePicker onChange={onChange} picker="week" />
-          </div>
-          <div className="space-x-2">
             <DatePicker onChange={onChange} picker="month" />
             <DatePicker onChange={onChange} picker="quarter" />
           </div>
+
           <DatePicker onChange={onChange} picker="year" />
           <SwitchablePicker />
         </Grid.Cell>
