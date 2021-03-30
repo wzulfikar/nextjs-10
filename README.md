@@ -35,4 +35,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Build Size
 
-![buildsize](buildsize.jpeg)
+![buildsize](docs/buildsize.jpeg)
+
+## Lighthouse Report
+
+<a title="Lighthouse report" href="https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Fnextjs-10-template.vercel.app"><img src="docs/lighthouse-report.jpg" alt="Lighthouse report"></a>
