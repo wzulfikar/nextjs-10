@@ -4,7 +4,8 @@ import { DiGithubBadge } from 'react-icons/di';
 
 import styles from '@src/styles/Home.module.css';
 import ToggleDarkMode from '@src/components/ToggleDarkMode';
-import { trackGoal, events } from '@src/lib/analytic';
+import { trackGoal } from '@src/lib/analytic';
+import { events } from '@src/config/analytic';
 import getGithubUrl from '@src/lib/github/getGithubUrl';
 
 const githubRepo = process.env.NEXT_PUBLIC_GITHUB_REPO;

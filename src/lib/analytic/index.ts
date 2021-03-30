@@ -1,7 +1,9 @@
 import * as Fathom from 'fathom-client';
-import { Event } from './events';
 
-export * from './events';
+export type Event = {
+  event: string;
+  centValue?: number;
+};
 
 /**
  * @description

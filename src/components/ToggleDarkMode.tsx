@@ -6,7 +6,8 @@ import { HiSun, HiMoon } from 'react-icons/hi';
 import { usePrevious } from 'react-use';
 
 import useDarkMode from '@src/hooks/useDarkMode';
-import { trackGoal, events } from '@src/lib/analytic';
+import { trackGoal } from '@src/lib/analytic';
+import { events } from '@src/config/analytic';
 
 function ToggleDarkMode({ initialValue = true }) {
   const darkMode = useDarkMode(initialValue);
