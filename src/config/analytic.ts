@@ -23,6 +23,20 @@ export const events = {
   Preview_GridCell_ClickOpenInGithub: {
     event: 'XDGII22Y',
   },
+
+  // Track checkout process
+  StripePreview_ClickCheckout: {
+    event: 'P8KTQRJY',
+  },
+  StripePreview_PaymentSuccessful: {
+    event: 'DRFURCVI',
+  },
+  StripePreview_PaymentFailed: {
+    event: '33F0HCOC',
+  },
+  StripePreview_ClickManageSubscription: {
+    event: 'VKBNYD6J',
+  },
 };
 
 export default { events };

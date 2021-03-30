@@ -31,9 +31,9 @@ function HintStripeTestCards() {
 function PriceList({ prices, onCheckout, recurringSuffix = null }) {
   const [isCheckingOut, setIsCheckingOut] = useState(null);
 
-  async function _onCheckout(priceId, mode) {
+  async function _onCheckout(priceId, amount, mode) {
     setIsCheckingOut(priceId);
-    await onCheckout(priceId, mode);
+    await onCheckout(priceId, amount, mode);
     setIsCheckingOut(null);
   }
 
@@ -46,6 +46,7 @@ function PriceList({ prices, onCheckout, recurringSuffix = null }) {
           onClick={() =>
             _onCheckout(
               price.id,
+              price.unit_amount,
               Boolean(recurringSuffix) ? 'subscription' : 'payment'
             )
           }

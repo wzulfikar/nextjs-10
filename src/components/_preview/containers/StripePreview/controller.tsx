@@ -6,6 +6,7 @@ import {
 } from 'next-stripe/client';
 import { useAsync } from 'react-use';
 
+import trackGoal from '@src/utils/trackGoal';
 import formatAmountForStripe from '@src/lib/stripe/formatAmountForStripe';
 import StripePreview from './elements';
 
@@ -31,13 +32,20 @@ export default function StripePreviewController({ prices }) {
         .then((res) => res.json())
         .then((paymentIntent) => {
           console.log('paymentIntent:', paymentIntent);
-          if (paymentIntent.statusCode === 500) {
-            alert('Payment failed: ' + paymentIntent.message);
-            return;
-          }
 
-          alert('Payment status: ' + paymentIntent.payment_status);
-          localStorage.removeItem('_stripeCheckoutSession');
+          if (paymentIntent.statusCode === 500) {
+            trackGoal('StripePreview_PaymentFailed');
+
+            alert('Payment failed: ' + paymentIntent.message);
+          } else {
+            trackGoal(
+              'StripePreview_PaymentSuccessful',
+              paymentIntent.amount_total
+            );
+
+            alert('Payment status: ' + paymentIntent.payment_status);
+            localStorage.removeItem('_stripeCheckoutSession');
+          }
         });
     }
   }, []);
@@ -65,7 +73,9 @@ export default function StripePreviewController({ prices }) {
     return 'cus_JCdi2hmQ4ggKhh';
   }
 
-  async function onCheckout(priceId, mode: 'subscription' | 'payment') {
+  async function onCheckout(priceId, amount, mode: 'subscription' | 'payment') {
+    trackGoal('StripePreview_ClickCheckout', amount);
+
     // Create stripe checkout session
     const qty = 1; // Assume user will buy one item
 
@@ -75,10 +85,7 @@ export default function StripePreviewController({ prices }) {
     const lineItem = isCustomAmount
       ? {
           name: customPrice.id,
-          amount: formatAmountForStripe(
-            customPrice.unit_amount / 100,
-            customPrice.currency
-          ),
+          amount: formatAmountForStripe(amount / 100, customPrice.currency),
           currency: customPrice.currency,
           quantity: qty,
         }
@@ -109,6 +116,8 @@ export default function StripePreviewController({ prices }) {
   }
 
   async function onClickManageSubscription() {
+    trackGoal('StripePreview_ClickManageSubscription');
+
     const session = await createBillingPortalSession({
       customer: getCustomerId(),
       return_url: window.location.href,
