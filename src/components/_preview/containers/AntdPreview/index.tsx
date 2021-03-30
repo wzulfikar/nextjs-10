@@ -98,9 +98,9 @@ export default function AntdPreview() {
             <DatePicker onChange={onChange} picker="week" />
             <DatePicker onChange={onChange} picker="month" />
             <DatePicker onChange={onChange} picker="quarter" />
+            <DatePicker onChange={onChange} picker="year" />
           </div>
 
-          <DatePicker onChange={onChange} picker="year" />
           <SwitchablePicker />
         </Grid.Cell>
 
