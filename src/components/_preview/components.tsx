@@ -98,6 +98,10 @@ const components = {
   StripePreview: {
     redirect: '/_preview/StripePreview',
   },
+  VercelPreview: loadComponent(() => import('./containers/VercelPreview'), {
+    githubUrl: getGithubUrl('./containers/VercelPreview/index.tsx'),
+    props: { hideDisgui: true },
+  }),
 };
 
 export default components;
