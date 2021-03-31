@@ -9,6 +9,7 @@ import DatePicker from './DatePicker';
 import DragAndDrop from './DragAndDrop';
 import PinCode from './PinCode';
 import PaymentCard from './PaymentCard';
+import ProgressBar from './ProgressBar';
 
 /**
  * Preview for baseweb components. If you don't want to use baseweb, remove these packages:
@@ -42,6 +43,10 @@ export default function BaseWebPreview() {
 
             <Grid.Cell {...PaymentCard}>
               <PaymentCard />
+            </Grid.Cell>
+
+            <Grid.Cell {...ProgressBar}>
+              <ProgressBar />
             </Grid.Cell>
           </Grid>
         </div>
