@@ -90,7 +90,7 @@ export default function Home() {
 
   return (
     <div className={darkMode ? 'dark' : undefined}>
-      <div className="h-screen dark:bg-black">
+      <div className="h-full min-h-screen dark:bg-black">
         <Head>
           <title>Vercel x Tailwind</title>
         </Head>
