@@ -137,7 +137,7 @@ export default function Home() {
           <div className="pt-10 pb-10">
             <div
               ref={dspRef}
-              className="mb-12 flex flex-col items-center justify-center font-extrabold tracking-tighter text-6xl md:text-9xl"
+              className="mb-12 flex flex-col items-center justify-center font-extrabold tracking-tighter text-7xl md:text-9xl"
               style={{ lineHeight: 1.2 }}
             >
               <GradientText
@@ -159,11 +159,11 @@ export default function Home() {
               />
             </div>
 
-            <div className="mb-16 max-w-4xl mx-auto flex justify-center items-center">
-              <button className="mx-2 w-48 rounded-md py-3 px-3 bg-black text-white dark:bg-white dark:text-black font-medium">
+            <div className="flex flex-col px-4 space-y-3 sm:flex-row sm:space-y-0 mb-16 max-w-4xl mx-auto justify-center items-center">
+              <button className="mx-2 w-full sm:w-48 rounded-md py-3 px-3 bg-black text-white dark:bg-white dark:text-black font-medium">
                 Start Deploying
               </button>
-              <button className="mx-2 w-48 rounded-md py-3 px-3 border border-gray-300 text-gray-700 dark:border-gray-500 dark:text-gray-400 font-medium hover:border-black dark:hover:border-gray-400 dark:hover:text-gray-300">
+              <button className="mx-2 w-full sm:w-48 rounded-md py-3 px-3 border border-gray-300 text-gray-700 dark:border-gray-500 dark:text-gray-400 font-medium hover:border-black dark:hover:border-gray-400 dark:hover:text-gray-300">
                 Get a Demo
               </button>
             </div>
