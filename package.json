@@ -10,6 +10,7 @@
     "test": "jest --testPathPattern='__tests__/components'",
     "test:file": "jest",
     "test:types": "yarn tsc",
+    "dedupe-packages": "npx yarn-deduplicate && yarn",
     "husky:pre-commit": "lint-staged",
     "husky:pre-push": "concurrently \"yarn test\" \"yarn test:types\"",
     "checkly:visual_tests": "cross-env LOCAL=true node ./checkly/visual_tests/public_pages.js",
