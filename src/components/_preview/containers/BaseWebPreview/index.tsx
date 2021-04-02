@@ -11,6 +11,11 @@ import PinCode from './PinCode';
 import PaymentCard from './PaymentCard';
 import ProgressBar from './ProgressBar';
 
+import FileUploader from './FileUploader';
+import Menu from './Menu';
+import Rating from './Rating';
+import Select from './Select';
+
 /**
  * Preview for baseweb components. If you don't want to use baseweb, remove these packages:
  * `yarn remove baseui styletron-engine-atomic styletron-react @types/styletron-standard @types/styletron-react @types/styletron-engine-atomic`
@@ -48,6 +53,22 @@ export default function BaseWebPreview() {
             <Grid.Cell {...ProgressBar}>
               <ProgressBar />
             </Grid.Cell>
+
+            <Grid.Cell {...FileUploader}>
+              <FileUploader />
+            </Grid.Cell>
+
+             <Grid.Cell {...Menu}>
+               <Menu />
+             </Grid.Cell>
+                    
+              <Grid.Cell {...Rating}>
+               <Rating />
+             </Grid.Cell>
+                    
+               <Grid.Cell {...Select}>
+                <Select />
+             </Grid.Cell>
           </Grid>
         </div>
       </BaseProvider>
