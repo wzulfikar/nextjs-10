@@ -47,10 +47,10 @@ function ToggleDarkMode({ initialValue = true }) {
         checked={checked}
         icons={{
           checked: (
-            <HiSun className="h-4 w-4 relative bottom-1 right-0.5 text-white" />
+            <HiSun className="relative bottom-1 right-0.5 w-4 h-4 text-white" />
           ),
           unchecked: (
-            <HiMoon className="h-4 w-4 relative bottom-1 right-0.5 text-white" />
+            <HiMoon className="relative bottom-1 right-0.5 w-4 h-4 text-white" />
           ),
         }}
         onChange={darkMode.toggle}

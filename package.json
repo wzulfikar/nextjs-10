@@ -14,7 +14,8 @@
     "husky:pre-commit": "lint-staged",
     "husky:pre-push": "concurrently \"yarn test\" \"yarn test:types\"",
     "checkly:visual_tests": "cross-env LOCAL=true node ./checkly/visual_tests/public_pages.js",
-    "stripe:local-webhook": "stripe listen --forward-to=${BASE_URL:-localhost:3000}/api/webhook/stripe"
+    "stripe:local-webhook": "stripe listen --forward-to=${BASE_URL:-localhost:3000}/api/webhook/stripe",
+    "apollo:sync-schema": "./scripts/sync_apollo_schema.sh"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -80,6 +81,7 @@
     "playwright-core": "^1.10.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
+    "prettier-plugin-tailwind": "^2.2.10",
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3",
     "vercel": "^21.3.3"
